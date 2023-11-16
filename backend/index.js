@@ -47,6 +47,20 @@ app.put('/updateTodo/:id', async (req, res) => {
   }
 })
 
+app.put('markUnDone/:id', async (req, res) => {
+  try {
+    var todo = await TodoSchema.findById(req.params.id)
+    todo.completed = !todo.completed
+    await todo.save()
+    res.status(200).send({ message: "Horray!! You completed task successfully" })
+
+  } catch (error) {
+    res.send({ message: error.message })
+  }
+
+}
+)
+
 app.delete('/deleteTodo/:id', async (req, res) => {
   try {
     var todo = await TodoSchema.findByIdAndDelete(req.params.id)

@@ -2,6 +2,7 @@ import './App.css'
 import Card from './Components/Card'
 import { useEffect, useState } from 'react'
 import AddTodo from './Components/AddTodo'
+import Loading from './Components/Loading'
 function App() {
 
   const [show, setShow] = useState(false)
@@ -49,7 +50,7 @@ function App() {
 
       <main className='h-screen '>
         <div className='grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-3'>
-          {loading ? <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div> :
+          {loading ? <Loading /> :
             todos.map((todo) => {
               return (
                 <Card
